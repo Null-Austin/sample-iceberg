@@ -1,0 +1,71 @@
+<!--iceberg-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg</title>
+    <style>
+        .iceberg_elem {
+            /*background-color: rgb(13, 13, 13);*/
+            color: white;
+            width: 60%;
+            border-radius: 5px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        p.iceberg_elem {
+            text-align: left;
+        }
+        body {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: white;">Lore</h1>
+    <div id="iceberg_content"></div>
+</body>
+<script>
+    // Fixed the structure: content is now an array of objects
+    const content = [
+        {
+            'title': 'example',
+            'content': 'lorem ipsum'
+        },
+        {
+            'title': 'example2',
+            'content': 'lorem ipsum 2.0'
+        }
+    ];
+
+    // Function to create and append elements
+    function createTag() {
+        content.forEach(item => {
+            // Create elements
+            const div = document.createElement('div');
+            const h2 = document.createElement('h2');
+            const p = document.createElement('p');
+            const hr = document.createElement('hr');
+
+            // Set classes and text content
+            div.classList.add('iceberg_elem');
+            h2.innerText = item.title;
+            p.innerText = item.content;
+
+            // Append elements
+            div.appendChild(h2);
+            div.appendChild(p);
+            div.appendChild(hr);
+
+            // Append to iceberg content
+            document.getElementById('iceberg_content').appendChild(div);
+        });
+    }
+
+    createTag();
+</script>
