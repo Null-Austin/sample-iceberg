@@ -1,45 +1,102 @@
-<!--iceberg-->
+<!--
+Iceberg of the book, The Giver, and the lore behind it.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iceberg</title>
+    <title>The Giver Iceberg</title>
     <style>
-        .iceberg_elem {
-            /*background-color: rgb(13, 13, 13);*/
-            color: white;
-            width: 60%;
-            border-radius: 5px;
-            margin: 0 auto;
-            padding: 20px;
+        .extra{
+            color: gray;
         }
+        #iceberg_content {
+            background-color: rgb(13, 13, 13);
+            width: 60%;
+            margin: 0 auto;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        #iceberg_content::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 10px; /* Border width */
+            height: 100%;
+            background: linear-gradient(to bottom, rgb(111, 217, 255), black); /* Gradient on the left border */
+            border-radius: 5px 0 0 5px;
+        }
+
+        .iceberg_elem {
+            color: white;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            filter: blur(.5px);
+            font-size: 16px;
+            filter: brightness(0.5);
+        }
+        .iceberg_elem:hover{
+            font-size: 16px;
+            filter: blur(0px);
+            filter: brightness(1);
+            transition: all 1s ease-out;
+        }
+        p.iceberg_elem:hover{
+            text-decoration: underline;
+        }
+
         h2 {
             text-align: center;
         }
+
         p.iceberg_elem {
             text-align: left;
         }
+
         body {
             background-color: black;
             color: white;
         }
+
+        .iheader {
+            color: #322CFF;
+        }
+
+        .ip {
+            color: white;
+        }
+
     </style>
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>-->
 </head>
 <body>
-    <h1 style="text-align: center; color: white;">Lore</h1>
-    <div id="iceberg_content"></div>
+    <h1 style="text-align: center; color: white;">Lore Iceberg of "The Giver."</h1>
+    <div style="margin: 0 auto;text-align: center;">
+        <p class="extra">Tip of the iceberg...</p>
+
+        <div id="iceberg_content">
+
+        </div>
+
+        <p class="extra">The end of the iceberg...</p>
+    </div>
 </body>
 <script>
-    // Fixed the structure: content is now an array of objects
     const content = [
         {
-            'title': 'example',
-            'content': 'lorem ipsum'
+            't': 'lorem ipsum',
+            'c': 'not funny'
         },
         {
-            'title': 'example2',
-            'content': 'lorem ipsum 2.0'
+            't': 'example 2',
+            'c': '"just compy this code on and on"'
         }
     ];
 
@@ -54,8 +111,10 @@
 
             // Set classes and text content
             div.classList.add('iceberg_elem');
-            h2.innerText = item.title;
-            p.innerText = item.content;
+            h2.classList.add('iheader')
+            p.classList.add('ip')
+            h2.innerHTML = item.t;//innerHTML is not safe, but im accepting suggestions on my school project, so too bad!!! (maybe change it to innerText?)
+            p.innerHTML = item.c;
 
             // Append elements
             div.appendChild(h2);
